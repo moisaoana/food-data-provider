@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define MAX_FOOD_NAME 10
 #define MAX_TYPE_NAME 20
-void readType(char * model);
+void readType(char * type);
 double readPrice();
 
 int main() {
@@ -21,7 +21,6 @@ int main() {
     {
         foods[i]=(char*)malloc(MAX_FOOD_NAME*sizeof(char));
         gets(foods[i]);
-
     }
     for(int i=0;i<noOfFoods;i++)
     {
@@ -36,7 +35,6 @@ int main() {
            readType(types[i][j]);
            prices[i][j]=readPrice();
         }
-
     }
     printf("Please input no of drinks\n");
     scanf("%d", &noOfDrinks);
@@ -48,14 +46,12 @@ int main() {
         drinks[i]=(char*)malloc(MAX_FOOD_NAME*sizeof(char));
         readType(drinks[i]);
         drinkPrices[i]=readPrice();
-
     }
     printf("The food data is:\n");
     for(int i=0;i<noOfFoods;i++) {
         printf("%s: ", foods[i]);
         for(int j=0;j<noOfTypes[i];j++) {
             printf("(%s - %.2lf) ",types[i][j],prices[i][j]);
-
         }
         printf("\n");
     }
@@ -65,8 +61,7 @@ int main() {
     {
         printf("%s, ", drinks[i]);
     }
-    printf("%s", drinks[noOfDrinks-1]);
-    printf("\n");
+    printf("%s\n", drinks[noOfDrinks-1]);
     printf("prices: ");
     for(int i=0;i<noOfDrinks-1;i++)
     {
@@ -92,8 +87,6 @@ int main() {
     }
     free(drinks);
     free(drinkPrices);
-
-
     return 0;
 }
 
@@ -106,7 +99,6 @@ void readType(char * type) {
         i++;
     }
     type[i-1] = '\0';
-
 }
 
 double readPrice()
@@ -114,7 +106,6 @@ double readPrice()
     double price=0;
     char c;
     c=getchar();
-
     while(c!=')')
     {
         price=price *10+ (c-'0');
@@ -123,6 +114,4 @@ double readPrice()
     }
     getchar();
     return price;
-
 }
-
